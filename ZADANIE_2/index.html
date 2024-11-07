@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employment Form</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="form-container">
+    <h1>Employment Form</h1>
+    <form id="employment-form" action="#" method="post" novalidate>
+      
+      <!-- Imie i Nazwisko -->
+      <div class="form-row">
+        <div class="form-group">
+          <label for="first-name">First name</label>
+          <input type="text" id="first-name" placeholder="Jan" required>
+        </div>
+        <div class="form-group">
+          <label for="last-name">Last name</label>
+          <input type="text" id="last-name" placeholder="Kowalski" required>
+        </div>
+      </div>
+
+      <!-- E-mail, Telefon, Data urodzenia -->
+      <div class="form-row">
+        <div class="form-group">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" placeholder="jk@gamil.com" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" placeholder="505 505 505" required pattern="\d{3} \d{3} \d{3}">
+        </div>
+        <div class="form-group">
+          <label for="dob">Date of birth</label>
+          <input type="date" id="dob" required max="">
+        </div>
+      </div>
+
+      <!-- Plec -->
+      <div class="form-group">
+        <label for="gender">Gender</label>
+        <select id="gender" required>
+          <option value="">Select</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <!-- Stanowisko -->
+      <div class="form-group">
+        <label>What are you looking for</label>
+        <div class="checkbox-group">
+          <label><input type="radio" name="position" value="software-engineer" required> Software Engineer</label>
+          <label><input type="radio" name="position" value="ux-designer"> UX Designer</label>
+          <label><input type="radio" name="position" value="analytics-specialist"> Analytics Specialist</label>
+          <label><input type="radio" name="position" value="project-manager"> Project Manager</label>
+        </div>
+      </div>
+
+      <!-- Jezyki programowania -->
+      <div class="form-group">
+        <label>Which programming languages do you know?</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="languages" value="java"> Java</label>
+          <label><input type="checkbox" name="languages" value="javascript"> Javascript</label>
+          <label><input type="checkbox" name="languages" value="csharp"> C#</label>
+          <label><input type="checkbox" name="languages" value="kotlin"> Kotlin</label>
+          <label><input type="checkbox" name="languages" value="python"> Python</label>
+          <label><input type="checkbox" name="languages" value="scala"> Scala</label>
+        </div>
+      </div>
+
+      <!-- Wiadomosc -->
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" placeholder="Type your message" required></textarea>
+      </div>
+
+      <!-- Przycisk Reset i Submit -->
+      <div class="form-actions">
+        <button type="reset" class="reset-btn">Reset</button>
+        <button type="submit" class="submit-btn">Submit</button>
+      </div>
+
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
