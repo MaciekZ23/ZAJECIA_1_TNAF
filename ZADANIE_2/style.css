@@ -19,31 +19,35 @@ body {
     padding: 20px; /* Dodaje padding wewnetrzny w formularzu */
     border-radius: 8px; /* Zaokragla rogi formularza */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Dodaje subtelny cien do formularza */
+    max-width: 90%; /* Maksymalna szerokosc formularza nie przekroczy 90% szerokosci ekranu */
+    margin: 0 auto; /* Wyrównuje formularz na srodku strony */
 }
 
 h1 {
     color: #f57323; /* Ustawia kolor tekstu naglowka na pomaranczowy */
     margin-bottom: 20px; /* Dodaje odstep ponizej naglowka */
-    text-align: left; /* Wyrównuje tekst naglowka do srodka */
+    text-align: left; /* Wyrownuje tekst naglowka do lewej strony */
 }
 
 .form-group {
-    margin-bottom: 15px; /* Dodaje odstep pomiedzy grupami formularza */
+    margin-bottom: 20px; /* Dodaje odstep pomiedzy grupami formularza */
 }
 
 .form-row {
     display: flex; /* Uzywa Flexboxa do ukladania elementow w rzedzie */
     gap: 15px; /* Dodaje przerwe pomiedzy elementami */
+    flex-wrap: wrap; /* Zapewnia, ze elementy moga przechodzic do nastepnego wiersza w przypadku braku miejsca */
+    width: 100%; /* Ustawia szerokosc w 100% dostepnego kontenera */
 }
 
 .form-group label {
     display: block; /* Ustawia etykiety jako blokowe, zeby zajmowaly cala szerokosc */
     font-weight: bold; /* Ustawia pogrubiona czcionke dla etykiet */
-    margin-bottom: 5px; /* Dodaje odstep ponizej etykiety */
+    margin-bottom: 10px; /* Dodaje odstep ponizej etykiety */
     color: #f57323; /* Ustawia pomaranczowy kolor dla etykiet */
 }
 
-/* Ustawienia dla etykiet pytan */
+/* Ustawienia dla etykiet pytan radiowych i checkboxow */
 .radio-group label,
 .checkbox-group label {
     color: black; /* Ustawia czarny kolor dla etykiet opcji wyboru */
@@ -51,10 +55,10 @@ h1 {
     display: inline-flex; /* Ustawia etykiety jako inline-flex dla wyrownania obok siebie */
     align-items: center; /* Wyrownuje elementy w pionie */
     gap: 5px; /* Dodaje mala przerwe miedzy etykieta a polem wyboru */
-    white-space: nowrap;
+    white-space: nowrap; /* Zapewnia, ze tekst nie bedzie zawijany */
 }
 
-.form-group input,
+.form-row input,
 .form-group select,
 .form-group textarea {
     width: 100%; /* Ustawia szerokosc na 100% kontenera */
@@ -62,6 +66,11 @@ h1 {
     border: 1px solid #ddd; /* Ustawia jasnoszary border wokol pol formularza */
     border-radius: 4px; /* Zaokragla rogi pol formularza */
     font-size: 14px; /* Ustawia wielkosc czcionki w polach formularza */
+    box-sizing: border-box; /* Ustawia box-sizing na border-box, aby padding i border byly wliczane do szerokosci elementu */
+}
+
+.form-row > .form-group {
+    flex: 1; /* Ustawiamy kazdy element na rowna szerokosc w obrebie flexboxa */
 }
 
 .form-group input:focus,
@@ -72,19 +81,19 @@ h1 {
 }
 
 .radio-group {
-    display: inline-flex; /* Uzywa Flexboxa do ukladania opcji radiowych w rzedzie */
-    justify-content: center; /* Rozmieszcza opcje radiowe rownomiernie */
-    gap: 5px; /* Dodaje przerwe pomiedzy opcjami */
-    flex-wrap: nowrap; /* Zapewnia, ze opcje radiowe beda w jednej linii */
-    white-space: nowrap;
+    display: flex; /* Uzywa Flexboxa do ukladania opcji radiowych w rzedzie */
+    justify-content: space-between; /* Rozmieszcza opcje radiowe rownomiernie */
+    gap: 10px; /* Dodaje przerwe pomiedzy opcjami */
+    flex-wrap: wrap; /* Zapewnia, ze opcje radiowe beda w jednej linii */
+    width: 100%; /* Ustawia szerokosc grupy opcji radiowych na 100% */
 }
 
 .checkbox-group {
-    display: inline-flex; /* Uzywa Flexboxa do ukladania opcji checkboxow w rzedzie */
-    justify-content: space-around; /* Ustawia opcje w poziomie na srodku */
-    gap: 56px; /* Dodaje wieksza przerwe miedzy opcjami */
-    flex-wrap: nowrap; /* Zapewnia, ze checkboxy beda w jednej linii */
-    white-space: nowrap;
+    display: flex; /* Uzywa Flexboxa do ukladania opcji checkboxow w rzedzie */
+    justify-content: space-between; /* Ustawia opcje w poziomie na srodku */
+    gap: 10px; /* Dodaje wieksza przerwe miedzy opcjami */
+    flex-wrap: wrap; /* Zapewnia, ze checkboxy beda w jednej linii */
+    width: 100%; /* Ustawia szerokosc grupy checkboxow na 100% */
 }
 
 textarea {
@@ -96,22 +105,72 @@ textarea {
     display: flex; /* Uzywa Flexboxa do ukladania przyciskow akcji */
     justify-content: space-between; /* Rozmieszcza przyciski rownomiernie na szerokosci formularza */
     margin-top: 20px; /* Dodaje odstep powyzej sekcji akcji */
+    gap: 10px; /* Dodaje przerwe pomiedzy przyciskami */
+    align-items: center; /* Wyrownuje przyciski w pionie */
 }
 
-.reset-btn,
-.submit-btn {
+.reset-btn {
+    background-color: #f57323; /* Ustawia pomaranczowy kolor tla dla przycisku resetowania */
     padding: 10px 20px; /* Dodaje padding do przyciskow */
     font-size: 16px; /* Ustawia rozmiar czcionki przyciskow */
     border: none; /* Usuwa domyslny border z przyciskow */
     cursor: pointer; /* Ustawia kursor na wskaznik, gdy uzytkownik najedzie na przycisk */
     border-radius: 4px; /* Zaokragla rogi przyciskow */
     color: #fff; /* Ustawia bialy kolor tekstu przyciskow */
-}
-
-.reset-btn {
-    background-color: #f57323; /* Ustawia pomaranczowy kolor tla dla przycisku resetowania */
+    text-align: center; /* Wyrownuje tekst w przycisku do srodka */
+    width: 25%; /* Ustawia szerokosc przycisku resetowania na 25% szerokosci formularza */
 }
 
 .submit-btn {
-    background-color: #f57323; /* Ustawia pomaranczowy kolor tla dla przycisku wysylania */
+    background-color: #f57323; /* Kolor tla przycisku submit */
+    color: #fff; /* Kolor tekstu przycisku submit */
+    padding: 10px 20px; /* Marginesy wewnetrzne przycisku */
+    font-size: 16px; /* Rozmiar czcionki przycisku */
+    border: none; /* Brak obramowania */
+    cursor: pointer; /* Zmiana kursora na wskazujący */
+    border-radius: 4px; /* Zaokraglone rogi przycisku */
+    width: 75%; /* Ustawia szerokosc przycisku submit na 75% szerokosci formularza */
+    text-align: center; /* Wyrownuje tekst do srodka w przycisku */
 }
+
+@media(max-width: 768px) 
+{
+    .form-row {
+        display: flex; /* Ustawia elastyczny uklad elementow */
+        flex-wrap: wrap; /* Pozwala na zawijanie elementow do nastepnej linii */
+        gap: 2px; /* Dodaje male odstepy miedzy elementami */
+        flex-direction: column; /* Ustawia elementy w kolumnie */
+    }
+
+    .form-group {
+        width: 100%; /* Ustawia szerokosc grupy formularza na 100% */
+    }
+
+    .radio-group, 
+    .checkbox-group {
+        display: grid; /* Uzywa siatki do rozmieszczenia elementow */
+        grid-template-columns: 1fr 1fr; /* Dwie kolumny o rownych proporcjach */
+        gap: 2px; /* Odstepy miedzy elementami w siatce */
+    }
+
+    .form-actions {
+        flex-direction: row; /* Ustawia przyciski akcji w jednym wierszu */
+        gap: 10px; /* Dodaje odstepy miedzy przyciskami */
+        align-items: stretch; /* Przyciski rozciagaja sie na cala szerokosc */
+    }
+
+    .reset-btn {
+        width: 25%; /* Ustawia szerokosc przycisku resetowania na 25% */
+    } 
+    
+    .submit-btn {
+        width: 75%; /* Ustawia szerokosc przycisku wysylania na 75% */
+    }
+    
+    .form-row input,
+    .form-group select,
+    .form-group textarea {
+        width: 100%; /* Ustawia szerokosc tych elementow na 100% */
+    }
+}
+
